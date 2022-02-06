@@ -1,19 +1,19 @@
-import { State } from "../types"
+import { SquareState, GameState } from "../types/types"
 
 interface SquareProps {
 	key: number,
 	onClick: () => void,
-	value: State,
-	winnerState: State,
+	state: SquareState,
+	gameState: GameState,
 }
 
-function Square({key, onClick, value, winnerState}: SquareProps) {
-	if (value === 0) return (
-		<button className="square" onClick={onClick} disabled={!!winnerState} />
+function Square({key, onClick, state, gameState}: SquareProps) {
+	if (state === 0) return (
+		<button className="square" onClick={onClick} disabled={!!gameState} />
 	)
 	else return (
-		<button className={`square squared_${value}`} disabled>
-			{value}
+		<button className={`square square_${state}`} disabled>
+			{state === 1 ? "X": "O"}
 		</button>
 	)
 }
